@@ -1,10 +1,14 @@
-import getNumbers from "./assets/numbers";
-import getSymbols from "./assets/symbols";
-import getLetters from "./assets/letters";
+import getFirsts from "./assets/first";
+import getSeconds from "./assets/second";
+import getThirds from "./assets/third";
+import getFourths from "./assets/fourth";
+import getFifths from "./assets/fifth";
 
-const numbers = getNumbers();
-const symbols = getSymbols();
-const letters = getLetters();
+const firsts = getFirsts();
+const seconds = getSeconds();
+const thirds = getThirds();
+const fourths = getFourths();
+const fifths = getFifths();
 
 
 function _getRandom(items) {
@@ -12,17 +16,19 @@ function _getRandom(items) {
 }
 
 /**
- * Generate a random id in the form of number-symbol-letter
+ * Generate a random id 
  * @param {string} [delim] character to use as the delimiter
  * @returns random id
  */
-function generate(delim='-') {
-    const number = _getRandom(numbers);
-    const symbol = _getRandom(symbols);
-    const letter = _getRandom(letters);
+function generate() {
+    const first = _getRandom(firsts);
+    const second = _getRandom(seconds);
+    const third = _getRandom(thirds);
+    const fourth = _getRandom(fourths);
+    const fifth = _getRandom(fifths);
 
-    return [number,symbol,letter].join(delim);
+    return [first+second+third+fourth+fifth].join();
 }
 
 
-export { numbers, symbols, letters, generate };
+export { firsts, seconds, thirds, fourths, fifths, generate };

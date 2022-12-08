@@ -21,16 +21,24 @@
             <v-card-text>
                 <table style="width: 100%; border: 0">
                     <tr>
-                        <td><strong>Number</strong></td>
-                        <td><v-select v-on="editNumber" :items="numbers.map((v) => { return {text: v, value: v} })" allow-other /></td>
+                        <td><strong>First</strong></td>
+                        <td><v-select v-on="editFirst" :items="firsts.map((v) => { return {text: v, value: v} })" allow-other /></td>
                     </tr>
                     <tr>
-                        <td><strong>Symbol</strong></td>
-                        <td><v-select v-on="editSymbol" :items="symbols.map((v) => { return {text: v, value: v} })" allow-other /></td>
+                        <td><strong>Second</strong></td>
+                        <td><v-select v-on="editSecond" :items="seconds.map((v) => { return {text: v, value: v} })" allow-other /></td>
                     </tr>
                     <tr>
-                        <td><strong>Letter</strong></td>
-                        <td><v-select v-on="editLetter" :items="letters.map((v) => { return {text: v, value: v} })" allow-other /></td>
+                        <td><strong>Third</strong></td>
+                        <td><v-select v-on="editThird" :items="thirds.map((v) => { return {text: v, value: v} })" allow-other /></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fourth</strong></td>
+                        <td><v-select v-on="editFourth" :items="fourths.map((v) => { return {text: v, value: v} })" allow-other /></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fifth</strong></td>
+                        <td><v-select v-on="editFifth" :items="fifths.map((v) => { return {text: v, value: v} })" allow-other /></td>
                     </tr>
                 </table>
             </v-card-text>
@@ -44,7 +52,7 @@
 </template>
 
 <script>
-    import { numbers, symbols, letters, generate } from './hri';
+    import { firsts, seconds, thirds, fourths, fifths, generate } from './hri';
 
     
     export default {
@@ -57,10 +65,12 @@
 
         data: function() {
             return {
-                delim: '-',
-                numbers: numbers,
-                symbols: symbols,
-                letters: letters,
+                
+                firsts: firsts,
+                seconds: seconds,
+                thirds: thirds,
+                fourths: fourths,
+                fifths: fifths,
                 editActive: false,
                 editNumber: undefined,
                 editSymbol: undefined,
@@ -72,7 +82,7 @@
         
         mounted: function() {
             if ( !this.value ) {
-                let init = generate(this.delim);
+                let init = generate();
                 this.$emit('input', init);
             }
         },
@@ -82,20 +92,9 @@
             /**
              * Manually choose the components of the id
              */
-            edit: function() {
-                if ( this.value ) {
-                    let parts = this.value.split(this.delim);
-                    if ( parts.length === 3 ) {
-                        this.editNumber = parts[0];
-                        this.editSymbol = parts[1];
-                        this.editLetter = parts[2];
-                    }
-                }
-                this.editActive = true;
-            },
-
+           
             save: function() {
-                let value = [this.editNumber, this.editSymbol, this.editLetter].join(this.delim);
+                let value = [this.editFirst, this.editSecond, this.editThird, this.editFourth, this.editFifth].join();
                 this.$emit('input', value);
                 this.editActive = false;
             },
@@ -104,7 +103,7 @@
              * Get a new human-readable-id for the value
              */
             refresh: function() {
-                let value = generate(this.delim);
+                let value = generate();
                 this.$emit('input', value);
             }
 
