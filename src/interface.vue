@@ -1,17 +1,13 @@
 
 <template>
-    <div>
-    <input
-      v-on="val"
-      @change="onChange" />
+    <div>    
   </div>
     <div class="human-readable-id">
         <v-input v-on="value" disabled>
             <template #prepend>
                 <v-icon name="perm_identity" />
             </template>
-        </v-input>
-        <v-button @click="edit" icon><v-icon name="edit" /></v-button>
+        </v-input>       
         <v-button @click="refresh" icon><v-icon name="refresh" /></v-button>
     </div>
 
