@@ -2,7 +2,7 @@ This is a modification/fix from dwaring87-interface-human-readable-id
 ====
 
 A Directus v9 Interface for generating a human-readable ID for a text or string field in a collection.
-The ID takes the form of a unique 5-digit code with numbers.
+The ID takes the form of a unique 5-digit code with numbers/letters.
 
 ![image](https://user-images.githubusercontent.com/65249675/206595889-a27ca831-042e-4e2b-8253-984711b6d27f.png)
 
